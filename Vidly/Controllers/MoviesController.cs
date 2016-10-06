@@ -48,6 +48,7 @@ namespace Vidly.Controllers
             return View(movie);
         }
 
+        [Authorize]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -60,7 +61,7 @@ namespace Vidly.Controllers
             return View("Form", movies);
         }
 
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);

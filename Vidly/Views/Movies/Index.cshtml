@@ -4,26 +4,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink("New", "New", "Movies", null, new { @class = "btn btn-primary" })
+}
 
-@Html.ActionLink("New", "New", "Movies", null,new{ @class="btn btn-primary"})
 
 <h2>Movies</h2>
 
 @*@if (Model.Count == 0)
-{
-    <h1>No Movies</h1>
-}
-else
-{*@
-
-<ul>
-    @foreach (var x in Model)
     {
-
-        <li>@Html.ActionLink(@x.name, "Edit", "Movies", new { id = x.Id }, null)</li>
-
+        <h1>No Movies</h1>
     }
-</ul>
+    else
+    {*@
+
+@*<ul>
+        @foreach (var x in Model)
+        {
+
+            <li>@Html.ActionLink(@x.name, "Edit", "Movies", new { id = x.Id }, null)</li>
+
+        }
+    </ul>*@
 
 
 <table class="table table-bordered movies">
@@ -32,60 +35,68 @@ else
         <tr>
             <th>Name</th>
             <th>Genre</th>
-            <th>Options</th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <th>Options</th>
+            }
+
 
         </tr>
     </thead>
-    <tbody>
-
-
-    </tbody>
+    <tbody></tbody>
 </table>
 
 @section scripts{
 
-<script>
+    <script>
 
-    $(document).ready(function() {
+        $(document).ready(function () {
 
 
-        $.ajax({
-            url: '/api/movies',
-            type: 'GET',
-            dataType: 'JSON',
-            success: function (data) {
-                console.log(JSON.stringify(data));
-                
-                $.each(data, function (i) {
+            $.ajax({
+                url: '/api/movies',
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    console.log(JSON.stringify(data));
 
-                    $('tbody').append("<tr><td>" + data[i].name + "</td><td>" + data[i].genre.name + "</td><td><button data=\""+data[i].id +"\" class=\"btn-link\">Delete</button></td></tr>")
-                });
+                    $.each(data, function (i) {
 
-            }               
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                           <text> $('tbody').append("<tr><td>" + data[i].name + "</td><td>" + data[i].genre.name + "</td><td><button data=\"" + data[i].id + "\" class=\"btn-link\">Delete</button></td></tr>")</text>
+                        }
+                        else
+                        {
+                           <text> $('tbody').append("<tr><td>" + data[i].name + "</td><td>" + data[i].genre.name + "</td></tr>")</text>
+                        }
+                    });
+
+                }
+            });
+
+
+            $('.movies').on('click', 'button', function () {
+
+
+                var linha = $(this).parent().parent();
+
+                if (confirm("Are you sure?")) {
+                    $.ajax({
+                        url: '/api/movies/' + $(this).attr("data"),
+                        type: 'DELETE',
+                        success: function () {
+
+                            linha.remove();
+                        }
+                    });
+                }
+            });
+
+
         });
 
-
-        $('.movies').on('click', 'button', function () {
-
-
-            var linha = $(this).parent().parent();
-
-            if (confirm("Are you sure?")) {
-                $.ajax({
-                    url: '/api/movies/' + $(this).attr("data"),
-                    type: 'DELETE',
-                    success: function () {
-
-                        linha.remove();
-                    }
-                });
-            }
-        });
-        
-
-    });
-
-</script>
+    </script>
 
 }
 

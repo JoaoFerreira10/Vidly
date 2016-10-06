@@ -70,6 +70,7 @@ namespace Vidly.Controllers.Api
             return Ok(movie2);
         }
 
+        [Authorize]
         [HttpDelete]
         public IHttpActionResult DeleteMovie(int id)
         {
