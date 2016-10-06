@@ -21,7 +21,7 @@ namespace Vidly.Controllers.Api
 
         public IHttpActionResult GetMovies()
         {
-           var movies = _context.Movies.ToList();
+           var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             return Ok(movies);
         }

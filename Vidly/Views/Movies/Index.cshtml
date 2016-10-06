@@ -21,6 +21,71 @@ else
     {
 
         <li>@Html.ActionLink(@x.name, "Edit", "Movies", new { id = x.Id }, null)</li>
+
     }
 </ul>
+
+
+<table class="table table-bordered movies">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Options</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+
+    </tbody>
+</table>
+
+@section scripts{
+
+<script>
+
+    $(document).ready(function() {
+
+
+        $.ajax({
+            url: '/api/movies',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function (data) {
+                console.log(JSON.stringify(data));
+                
+                $.each(data, function (i) {
+
+                    $('tbody').append("<tr><td>" + data[i].name + "</td><td>" + data[i].genre.name + "</td><td><button data=\""+data[i].id +"\" class=\"btn-link\">Delete</button></td></tr>")
+                });
+
+            }               
+        });
+
+
+        $('.movies').on('click', 'button', function () {
+
+
+            var linha = $(this).parent().parent();
+
+            if (confirm("Are you sure?")) {
+                $.ajax({
+                    url: '/api/movies/' + $(this).attr("data"),
+                    type: 'DELETE',
+                    success: function () {
+
+                        linha.remove();
+                    }
+                });
+            }
+        });
+        
+
+    });
+
+</script>
+
+}
 
