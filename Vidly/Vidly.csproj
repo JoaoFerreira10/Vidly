@@ -265,6 +265,10 @@
     <Compile Include="Migrations\201609231612486_MoviesValidations.Designer.cs">
       <DependentUpon>201609231612486_MoviesValidations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610062309500_AddRental.cs" />
+    <Compile Include="Migrations\201610062309500_AddRental.Designer.cs">
+      <DependentUpon>201610062309500_AddRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -273,6 +277,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\NewMovieViewModel.cs" />
@@ -393,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609231612486_MoviesValidations.resx">
       <DependentUpon>201609231612486_MoviesValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610062309500_AddRental.resx">
+      <DependentUpon>201610062309500_AddRental.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
