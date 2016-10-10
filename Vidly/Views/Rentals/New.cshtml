@@ -36,11 +36,14 @@
 
         $(document).ready(function () {
 
+            var vm = { movieId: [] };
+
+
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),//movies's name
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: '/api/customers?name=%QUERY',
+                    url: '/api/customers?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
@@ -51,7 +54,7 @@
                 source: customers
             }).on("typeahead:select", function (e, m) {
 
-                alert(m.name);
+                vm.customerId = m.id;
             });
 
 
@@ -72,6 +75,9 @@
             }).on("typeahead:select", function (e, m) {
 
                 $("#movies-list").append("<li class='list-group-item'>" + m.name + "</li>");
+
+                vm.movieId.push(m.id)
+                console.log(JSON.stringify(vm));
             });
 
         });
