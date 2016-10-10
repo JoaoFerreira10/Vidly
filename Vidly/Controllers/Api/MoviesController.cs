@@ -19,12 +19,17 @@ namespace Vidly.Controllers.Api
         }
 
 
-        public IHttpActionResult GetMovies()
+        public IHttpActionResult GetMovies(string name = null)
         {
-           var movies = _context.Movies.Include(m => m.Genre).ToList();
+            var movies = _context.Movies.Include(m => m.Genre).Where(m => m.Available > 0);
+
+            if (!string.IsNullOrEmpty(name))
+                movies = movies.Where(m => m.name.Contains(name));
+
+            movies.ToList();
 
             return Ok(movies);
-        }
+        } 
 
         public IHttpActionResult GetMovie(int id)
         {
@@ -63,6 +68,7 @@ namespace Vidly.Controllers.Api
             movie2.GenreId = movie.GenreId;
             movie2.DateAdded = movie.DateAdded;
             movie2.NumberInStock = movie.NumberInStock;
+            movie2.Available = movie.Available;
             movie2.ReleaseDate = movie.ReleaseDate;
 
             _context.SaveChanges();
