@@ -281,6 +281,42 @@
     <Compile Include="Migrations\201610092121589_updateAvailableInMovie.Designer.cs">
       <DependentUpon>201610092121589_updateAvailableInMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610102121585_UpdateDateReturnedOnRental.cs" />
+    <Compile Include="Migrations\201610102121585_UpdateDateReturnedOnRental.Designer.cs">
+      <DependentUpon>201610102121585_UpdateDateReturnedOnRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610102223498_UpdateIdOnRental.cs" />
+    <Compile Include="Migrations\201610102223498_UpdateIdOnRental.Designer.cs">
+      <DependentUpon>201610102223498_UpdateIdOnRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610102336227_UpdateIdOnRental1.cs" />
+    <Compile Include="Migrations\201610102336227_UpdateIdOnRental1.Designer.cs">
+      <DependentUpon>201610102336227_UpdateIdOnRental1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610122158109_DeleteDateRented.cs" />
+    <Compile Include="Migrations\201610122158109_DeleteDateRented.Designer.cs">
+      <DependentUpon>201610122158109_DeleteDateRented.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610122222266_UpdateRental.cs" />
+    <Compile Include="Migrations\201610122222266_UpdateRental.Designer.cs">
+      <DependentUpon>201610122222266_UpdateRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610122239206_UpdateIdOnRental2.cs" />
+    <Compile Include="Migrations\201610122239206_UpdateIdOnRental2.Designer.cs">
+      <DependentUpon>201610122239206_UpdateIdOnRental2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610122242153_RemoveRental.cs" />
+    <Compile Include="Migrations\201610122242153_RemoveRental.Designer.cs">
+      <DependentUpon>201610122242153_RemoveRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610122247530_AddRent.cs" />
+    <Compile Include="Migrations\201610122247530_AddRent.Designer.cs">
+      <DependentUpon>201610122247530_AddRent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610122252297_AddRent1.cs" />
+    <Compile Include="Migrations\201610122252297_AddRent1.Designer.cs">
+      <DependentUpon>201610122252297_AddRent1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -289,7 +325,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\Rental.cs" />
+    <Compile Include="Models\Rent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\NewMovieViewModel.cs" />
@@ -299,6 +335,8 @@
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -312,6 +350,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -323,6 +363,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
@@ -427,6 +469,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610092121589_updateAvailableInMovie.resx">
       <DependentUpon>201610092121589_updateAvailableInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610102121585_UpdateDateReturnedOnRental.resx">
+      <DependentUpon>201610102121585_UpdateDateReturnedOnRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610102223498_UpdateIdOnRental.resx">
+      <DependentUpon>201610102223498_UpdateIdOnRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610102336227_UpdateIdOnRental1.resx">
+      <DependentUpon>201610102336227_UpdateIdOnRental1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610122158109_DeleteDateRented.resx">
+      <DependentUpon>201610122158109_DeleteDateRented.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610122222266_UpdateRental.resx">
+      <DependentUpon>201610122222266_UpdateRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610122239206_UpdateIdOnRental2.resx">
+      <DependentUpon>201610122239206_UpdateIdOnRental2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610122242153_RemoveRental.resx">
+      <DependentUpon>201610122242153_RemoveRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610122247530_AddRent.resx">
+      <DependentUpon>201610122247530_AddRent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610122252297_AddRent1.resx">
+      <DependentUpon>201610122252297_AddRent1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

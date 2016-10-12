@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Vidly.Dtos;
 using Vidly.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace Vidly.Controllers.Api
 {
@@ -34,11 +35,23 @@ namespace Vidly.Controllers.Api
             foreach (var item in movies)
             {
                 item.Available--;
-                var rental = new Rental { Customer = customer, Movie = item, DateRented = DateTime.Now };
-                _context.Rentals.Add(rental);            
+                var rental = new Rent { Customer = customer, Movie = item, DateRented = DateTime.Now };
+                _context.Rentals.Add(rental);
+  
             };
 
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                 Console.WriteLine(e.Message);
+
+                //'System.Data.Entity.Infrastructure.DbUpdateException
+                //return BadRequest(e.Message);
+            }
+           
 
             return Ok();
         }

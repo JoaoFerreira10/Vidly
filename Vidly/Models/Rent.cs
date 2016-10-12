@@ -6,16 +6,17 @@ using System.Web;
 
 namespace Vidly.Models
 {
-    public class Rental
+    public class Rent
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
+
+        [Required]
+        public Movie Movie { get; set; }
 
         [Required]
         public Customer Customer { get; set; }
 
-        [Required]
-        public Movie Movie { get; set; }
         public DateTime DateRented { get; set; }
-        public DateTime DateReturned { get; set; }
+        public DateTime? DateReturned { get; set; }
     }
 }

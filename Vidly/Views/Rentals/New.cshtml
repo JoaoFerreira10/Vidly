@@ -6,7 +6,8 @@
 }
 
 <h2>New</h2>
-<form>
+
+<form id="NewRental">
     <div class="form-group">
         <label>Customer</label>
         <input id="customer" type="text" value="" class="form-control" />
@@ -36,7 +37,7 @@
 
         $(document).ready(function () {
 
-            var vm = { movieId: [] };
+            var vm = { MoviesId: [] };
 
 
             var customers = new Bloodhound({
@@ -76,11 +77,33 @@
 
                 $("#movies-list").append("<li class='list-group-item'>" + m.name + "</li>");
 
-                vm.movieId.push(m.id)
+                vm.MoviesId.push(m.id);
                 console.log(JSON.stringify(vm));
             });
 
+            $("#NewRental").submit(function (e) {
+
+                e.preventDefault();
+
+                console.log("entrou");
+                $.ajax({
+                    url: "/api/Rentals",
+                    type: "POST",
+                    data: vm,
+                    success: function () {
+                        alert("ok");
+                        toastr.success("Rental created with success!");
+                    },
+                    error: function (e) {
+                        toastr.error("An error has ocurried ");
+                    }
+                });
+
+
+            });
+
         });
+
 
 
     </script>

@@ -10,7 +10,8 @@ namespace Vidly
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/typeahead.bundle.js"
+                        "~/Scripts/typeahead.bundle.js",
+                        "~/Scripts/toastr.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -28,7 +29,8 @@ namespace Vidly
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/site.css",
-                      "~/Content/typeahead.css"));
+                      "~/Content/typeahead.css",
+                      "~/Content/toastr.css"));
         }
     }
 }
